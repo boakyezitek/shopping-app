@@ -14,11 +14,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Get the latest 10 products from the database
-        $products = Product::query()->latest()->paginate(10);
+        try {
+            // Get the latest 10 products from the database
+            $products = Product::query()->latest()->paginate(10);
 
-        // Return the products as a JSON response
-        return ProductResource::collection($products);
+            // Return the products as a JSON response
+            return ProductResource::collection($products);
+        } catch (\Exception $e) {
+            // Handle the error
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -26,8 +31,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // Return the specified product as a JSON response
-        return ProductResource::make($product);
+        try {
+            // Return the specified product as a JSON response
+            return ProductResource::make($product);
+        } catch (\Exception $e) {
+            // Handle the error
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
-
 }

@@ -14,9 +14,13 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::query('products')->with('')->latest()->paginate(10);
+        try {
+            $invoices = Invoice::query('products')->with('')->latest()->paginate(10);
 
-        return InvoiceResource::collection($invoices);
+            return InvoiceResource::collection($invoices);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -24,6 +28,10 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        return InvoiceResource::make($invoice->load('products'));
+        try {
+            return InvoiceResource::make($invoice->load('products'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
