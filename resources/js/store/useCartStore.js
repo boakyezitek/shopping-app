@@ -1,16 +1,17 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 
 export const useCartStore = defineStore('cart', () => {
-    const cart = ref([]);
+    const carts = ref([]);
 
     const addToCart = (item) => {
-        cart.value.push(item);
+        carts.value.push(item);
     }
 
     const removeFromCart = (item) => {
-        const cartIndex = cart.value.findIndex(c => c.id === item.id);
-        cart.value.splice(cartIndex, 1);
+        const cartIndex = carts.value.findIndex(c => c.id === item.id);
+        carts.value.splice(cartIndex, 1);
     }
 
-    return { cart, addToCart, removeFromCart}
+    return { carts, addToCart, removeFromCart}
 })

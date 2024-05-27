@@ -13,9 +13,14 @@
 
         <router-link class="link" to="/cart">
             <div class="flex flex-col items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-gray-400">
-                    shopping_bag
-                </span>
+                <div class="relative">
+            <div class=" bg-s-green-200 flex items-center justify-center text-[11px] w-[15px] h-[15px] absolute top-[-4px] right-[-4px] rounded-full text-white">
+                {{ carts.length }}
+            </div>
+            <span class="material-symbols-outlined">
+            shopping_bag
+        </span>
+        </div>
                 <span class="text-[12px]">Cart</span>
             </div>
         </router-link>
@@ -42,7 +47,11 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { useCartStore } from '../store/useCartStore';
 
+const store = useCartStore();
+const { carts } = storeToRefs(store);
 
 </script>
 
