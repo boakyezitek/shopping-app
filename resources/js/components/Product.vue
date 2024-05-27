@@ -8,7 +8,7 @@
         <div class="flex items-center justify-between p-2">
             <span class="text-[14px]">${{product.price}}</span>
             <span class="material-symbols-outlined">
-                add
+                add_shopping_cart
             </span>
         </div>
     </div>
