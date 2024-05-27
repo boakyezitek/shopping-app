@@ -4,19 +4,17 @@
             <img :src="product.image" class="object-contain h-[180px] w-[100%] rounded-[20px]" />
         </div>
 
-        <h4 class="p-2 text-gray-600 font-medium">{{ product.name}}</h4>
+        <h4 class="p-2 text-gray-600 font-medium">{{ product.name }}</h4>
         <div class="flex items-center justify-between p-2">
-            <span class="text-[14px]">${{product.price}}</span>
+            <span class="text-[14px]">${{ product.price }}</span>
             <span class="material-symbols-outlined" @click.stop="addToCart(product)"
-            v-if="carts.some((item) => item.id === product.id) === false"
-            >
+                v-if="carts.some((item) => item.id === product.id) === false">
                 add_shopping_cart
             </span>
 
             <span class="material-symbols-outlined" @click.stop="removeFromCart(product)"
-            v-if="carts.some((item) => item.id === product.id) === true"
-            >
-            remove_shopping_cart
+                v-if="carts.some((item) => item.id === product.id) === true">
+                remove_shopping_cart
             </span>
         </div>
     </div>
@@ -28,11 +26,11 @@ import { useCartStore } from '../store/useCartStore';
 const store = useCartStore();
 const { addToCart, removeFromCart } = store
 const { carts } = storeToRefs(store);
- defineProps({
+defineProps({
     product: {
         type: Object
     }
- })
+})
 </script>
 
 <style lang="scss" scoped></style>

@@ -5,6 +5,7 @@ import NotFoundPage from "../components/NotFoundPage.vue"
 import ProductDetailsPage from "../pages/ProductDetailsPage.vue"
 import InvoicePage from "../pages/InvoicePage.vue"
 import InvoiceDetailPage from "../pages/InvoiceDetailPage.vue"
+import CartPage from "../pages/CartPage.vue"
 
 
 
@@ -28,7 +29,11 @@ const routes = [
  {
     path: "/invoice/:id",
     component: InvoiceDetailPage
- }
+ },
+ {
+    path: "/carts",
+    component: CartPage
+ },
 ]
 
 const router = createRouter({

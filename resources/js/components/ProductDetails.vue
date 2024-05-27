@@ -29,9 +29,7 @@ star
 
             </div>
         </div>
-        <div class="fixed bottom-0 right-0 left-0 px-5 py-4 bg-white border-t-2 border-gray-200 flex justify-center items-center">
-            <button class="bg-s-green-200 text-[12px] text-white py-1 px-3 rounded-[10px] w-full h-[40px]">Buy Now</button>
-        </div>
+        <MenuButton title="Buy Now"/>
     </div>
 </template>
 
@@ -39,6 +37,7 @@ star
 import { onMounted, ref } from 'vue';
 import { useFetchAPIStore } from '../store/useFetchAPI';
 import Loader from './Loader.vue';
+import MenuButton from './MenuButton.vue';
 
 const { useFetchAPI } = useFetchAPIStore();
 const product = ref(null);

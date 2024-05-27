@@ -1,7 +1,8 @@
 <template>
-    <Loader v-if="isLoading"/>
+    <Loader v-if="isLoading" />
     <div class="grid grid-cols-2 gap-3 " v-else>
-        <Product :product="product" v-for="product of products" :key="product.id" @click="handleRouteToPage(product.id)"/>
+        <Product :product="product" v-for="product of products" :key="product.id"
+            @click="handleRouteToPage(product.id)" />
     </div>
 </template>
 
@@ -26,12 +27,12 @@ const handleRouteToPage = (id) => {
 
 }
 
-const handleGetProduct = async() => {
+const handleGetProduct = async () => {
     isLoading.value = true
-   await useFetchAPI('products', '', 'GET').then((res) => {
-    products.value = res.data
-    isLoading.value = false
-   }).catch((err) => console.log(err));
+    await useFetchAPI('products', '', 'GET').then((res) => {
+        products.value = res.data
+        isLoading.value = false
+    }).catch((err) => console.log(err));
 }
 
 onMounted(() => {
@@ -39,6 +40,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

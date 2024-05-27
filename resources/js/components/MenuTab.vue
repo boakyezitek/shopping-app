@@ -11,26 +11,27 @@
             </div>
         </router-link>
 
-        <router-link class="link" to="/cart">
+        <router-link class="link" to="/carts">
             <div class="flex flex-col items-center justify-center gap-2">
                 <div class="relative">
-            <div class=" bg-s-green-200 flex items-center justify-center text-[11px] w-[15px] h-[15px] absolute top-[-4px] right-[-4px] rounded-full text-white">
-                {{ carts.length }}
-            </div>
-            <span class="material-symbols-outlined">
-            shopping_bag
-        </span>
-        </div>
+                    <div
+                        class=" bg-s-green-200 flex items-center justify-center text-[11px] w-[15px] h-[15px] absolute top-[-4px] right-[-4px] rounded-full text-white">
+                        {{ carts.length }}
+                    </div>
+                    <span class="material-symbols-outlined">
+                        shopping_bag
+                    </span>
+                </div>
                 <span class="text-[12px]">Cart</span>
             </div>
         </router-link>
         <router-link class="link" to="/invoice">
             <div class="flex flex-col items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-gray-400">
-                description
-            </span>
-            <span class="text-[12px]">Invoice</span>
-        </div>
+                <span class="material-symbols-outlined text-gray-400">
+                    description
+                </span>
+                <span class="text-[12px]">Invoice</span>
+            </div>
         </router-link>
 
 
