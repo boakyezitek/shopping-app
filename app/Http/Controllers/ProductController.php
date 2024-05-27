@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
@@ -13,23 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-    }
+        // Get the latest 10 products from the database
+        $products = Product::query()->latest()->paginate(10);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProductRequest $request)
-    {
-        //
+        // Return the products as a JSON response
+        return ProductResource::collection($products);
     }
 
     /**
@@ -37,30 +26,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // Return the specified product as a JSON response
+        return ProductResource::make($product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateProductRequest $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
-    }
 }
