@@ -6,7 +6,25 @@ export default {
       "./resources/**/*.vue",
     ],
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+            poppins: ['Poppins']
+        },
+        screens: {
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            'xxl': '1366px',
+            '2xl': '1536px',
+            '3xl': '1680px',
+            '4xl': '1920px',
+            '5xl': '2560px',
+          },
+          container: {
+            center: true,
+          },
+      },
     },
     plugins: [],
   }
