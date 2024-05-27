@@ -21,9 +21,9 @@ export default {
             '4xl': '1920px',
             '5xl': '2560px',
           },
-          container: {
-            center: true,
-          },
+          colors: {
+            's-gray-200': '#f0f0f0'
+          }
       },
     },
     plugins: [],

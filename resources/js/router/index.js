@@ -1,6 +1,6 @@
 import { createRouter, createMemoryHistory } from "vue-router"
 
-import HomePage from "../components/HomePage.vue"
+import HomePage from "../pages/HomePage.vue"
 import AboutPage from "../components/AboutPage.vue"
 import NotFoundPage from "../components/NotFoundPage.vue"
 
