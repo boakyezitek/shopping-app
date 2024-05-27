@@ -21,5 +21,3 @@ import MenuButton from './MenuButton.vue';
 const store = useCartStore();
 const { carts } = storeToRefs(store);
 </script>
-
-<style lang="scss" scoped></style>

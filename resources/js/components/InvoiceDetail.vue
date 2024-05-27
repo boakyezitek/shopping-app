@@ -72,6 +72,9 @@ const { useFetchAPI } = useFetchAPIStore();
 const invoice = ref(null);
 const isLoading = ref(false);
 
+/**
+ * Fetches the invoice data from the remote API and stores it in the local variable.
+ */
 const handleGetProduct = async () => {
     isLoading.value = true
     const id = localStorage.getItem('invoiceId');
@@ -81,10 +84,16 @@ const handleGetProduct = async () => {
     }).catch((err) => console.log(err));
 }
 
+/**
+ * Calculates the total price of all the products in the invoice.
+ */
 const totalProduct = computed(() => {
     return invoice.value?.products?.reduce((sum, item) => sum + Number(item.price), 0)
 })
 
+/**
+ * Calls the `handleGetProduct()` function when the component is mounted.
+ */
 onMounted(() => {
     handleGetProduct()
 })

@@ -13,20 +13,37 @@ import { useRouter } from 'vue-router';
 import { useFetchAPIStore } from '../store/useFetchAPI';
 import Loader from './Loader.vue';
 
+/**
+ * The fetch API store instance, which manages the state of the API requests.
+ */
 const { useFetchAPI } = useFetchAPIStore();
 
+/**
+ * The router instance, which manages the navigation between pages.
+ */
 const router = useRouter();
 
-const products = ref([])
+/**
+ * The list of products being displayed in the component.
+ */
+const products = ref([]);
+
+/**
+ * A flag indicating whether the products are currently being loaded from the remote API.
+ */
 const isLoading = ref(false);
 
-
+/**
+ * Navigates to the product page with the specified ID.
+ */
 const handleRouteToPage = (id) => {
     localStorage.setItem('productId', id);
     router.push(`/products/${id}`);
-
 }
 
+/**
+ * Fetches the list of products from a remote API and stores it in a local variable.
+ */
 const handleGetProduct = async () => {
     isLoading.value = true
     await useFetchAPI('products', '', 'GET').then((res) => {
@@ -35,6 +52,9 @@ const handleGetProduct = async () => {
     }).catch((err) => console.log(err));
 }
 
+/**
+ * Calls the `handleGetProduct()` function when the component is mounted.
+ */
 onMounted(() => {
     handleGetProduct()
 })

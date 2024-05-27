@@ -10,8 +10,15 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+
+/**
+ * The router instance, which manages the navigation between pages.
+ */
 const router = useRouter();
 
+/**
+ * The title of the page being displayed in the component.
+ */
 defineProps({
     title: {
         type: String,
@@ -19,9 +26,10 @@ defineProps({
     }
 })
 
+/**
+ * Navigates to the previous page in the browser history.
+ */
 const handleRouteBack = () => {
     router.go(-1);
 }
 </script>
-
-<style lang="scss" scoped></style>

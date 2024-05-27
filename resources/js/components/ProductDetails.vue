@@ -39,10 +39,24 @@ import { useFetchAPIStore } from '../store/useFetchAPI';
 import Loader from './Loader.vue';
 import MenuButton from './MenuButton.vue';
 
+/**
+ * The fetch API store instance, which manages the state of the API requests.
+ */
 const { useFetchAPI } = useFetchAPIStore();
+
+/**
+ * The product being displayed in the component.
+ */
 const product = ref(null);
+
+/**
+ * A flag indicating whether the product is currently being loaded from the remote API.
+ */
 const isLoading = ref(false);
 
+/**
+ * Fetches the product data from a remote API and stores it in a local variable.
+ */
 const handleGetProduct = async() => {
     isLoading.value = true
     const id = localStorage.getItem('productId');
@@ -52,6 +66,9 @@ const handleGetProduct = async() => {
    }).catch((err) => console.log(err));
 }
 
+/**
+ * Calls the `handleGetProduct()` function when the component is mounted.
+ */
 onMounted(() => {
     handleGetProduct()
 })

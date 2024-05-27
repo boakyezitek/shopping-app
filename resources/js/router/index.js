@@ -7,8 +7,9 @@ import InvoicePage from "../pages/InvoicePage.vue"
 import InvoiceDetailPage from "../pages/InvoiceDetailPage.vue"
 import CartPage from "../pages/CartPage.vue"
 
-
-
+/**
+ * The routes configuration for the Vue Router.
+ */
 const routes = [
  {
     path: "/",
@@ -36,6 +37,9 @@ const routes = [
  },
 ]
 
+/**
+ * The Vue Router instance.
+ */
 const router = createRouter({
     history: createMemoryHistory(),
     linkExactActiveClass: 'active',

@@ -7,9 +7,3 @@
             placeholder="What are you looking for ?" />
     </div>
 </template>
-
-<script setup>
-
-</script>
-
-<style lang="scss" scoped></style>

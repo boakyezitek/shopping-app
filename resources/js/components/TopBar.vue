@@ -24,9 +24,13 @@
 import { storeToRefs } from 'pinia';
 import { useCartStore } from '../store/useCartStore';
 
+/**
+ * The cart store instance, which manages the state of the cart.
+ */
 const store = useCartStore();
+
+/**
+ * A reference to the `carts` state in the cart store, which is a list of cart items.
+ */
 const { carts } = storeToRefs(store);
-
 </script>
-
-<style lang="scss" scoped></style>

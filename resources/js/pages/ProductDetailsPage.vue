@@ -8,10 +8,4 @@
 <script setup>
 import ProductDetails from '../components/ProductDetails.vue';
 import TitleBar from '../components/TitleBar.vue';
-
-
 </script>
-
-<style lang="scss" scoped>
-
-</style>
