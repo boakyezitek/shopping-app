@@ -9,6 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    /**
+     * The fillable properties for the Product model.
+     */
     protected $fillable = [
         'name',
         'description',
@@ -16,6 +19,11 @@ class Product extends Model
         'image',
     ];
 
+    /**
+     * The invoices relationship for the Product model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function invoices()
     {
         return $this->hasMany(Invoice::class);

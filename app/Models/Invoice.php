@@ -10,6 +10,9 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    /**
+     * The fillable properties for the Invoice model.
+     */
     protected $fillable = [
         'invoice_number',
         'invoice_date',
@@ -19,6 +22,11 @@ class Invoice extends Model
         'tax_information',
     ];
 
+    /**
+     * The customer information attribute.
+     *
+     * @var Attribute
+     */
     protected function customerInformation(): Attribute {
         return Attribute::make(
             get: fn($value) => json_decode($value, true),
@@ -26,6 +34,11 @@ class Invoice extends Model
         );
     }
 
+    /**
+     * The supplier information attribute.
+     *
+     * @var Attribute
+     */
     protected function supplierInformation(): Attribute {
         return Attribute::make(
             get: fn($value) => json_decode($value, true),
@@ -33,6 +46,11 @@ class Invoice extends Model
         );
     }
 
+    /**
+     * The tax information attribute.
+     *
+     * @var Attribute
+     */
     protected function taxInformation(): Attribute {
         return Attribute::make(
             get: fn($value) => json_decode($value, true),
@@ -40,6 +58,11 @@ class Invoice extends Model
         );
     }
 
+    /**
+     * The products relationship for the Invoice model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function products()
     {
         return $this->belongsToMany(Product::class, 'invoice_items')->withPivot('quantity', 'price');
