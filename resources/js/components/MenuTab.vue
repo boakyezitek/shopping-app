@@ -2,7 +2,7 @@
     <div
         class="fixed bottom-0 right-0 left-0 px-5 py-2 bg-white border-t-2 border-gray-200 flex justify-between items-center">
 
-        <router-link to="/">
+        <router-link class="link" to="/">
             <div class="flex flex-col items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-gray-400">
                     home
@@ -11,7 +11,7 @@
             </div>
         </router-link>
 
-        <router-link to="/cart">
+        <router-link class="link" to="/cart">
             <div class="flex flex-col items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-gray-400">
                     shopping_bag
@@ -19,7 +19,7 @@
                 <span class="text-[12px]">Cart</span>
             </div>
         </router-link>
-        <router-link to="/invoice">
+        <router-link class="link" to="/invoice">
             <div class="flex flex-col items-center justify-center gap-2">
             <span class="material-symbols-outlined text-gray-400">
                 description
@@ -29,7 +29,7 @@
         </router-link>
 
 
-        <router-link to="/settings">
+        <router-link class="link" to="/settings">
             <div class="flex flex-col items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-gray-400">
                     settings

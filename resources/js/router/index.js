@@ -1,10 +1,10 @@
 import { createRouter, createMemoryHistory } from "vue-router"
 
 import HomePage from "../pages/HomePage.vue"
-import AboutPage from "../components/AboutPage.vue"
 import NotFoundPage from "../components/NotFoundPage.vue"
 import ProductDetailsPage from "../pages/ProductDetailsPage.vue"
 import InvoicePage from "../pages/InvoicePage.vue"
+import InvoiceDetailPage from "../pages/InvoiceDetailPage.vue"
 
 
 
@@ -24,11 +24,16 @@ const routes = [
  {
     path: "/:pathMatch(.*)*",
     component: NotFoundPage
+ },
+ {
+    path: "/invoice/:id",
+    component: InvoiceDetailPage
  }
 ]
 
 const router = createRouter({
     history: createMemoryHistory(),
+    linkExactActiveClass: 'active',
     routes,
 })
 

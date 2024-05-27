@@ -8,4 +8,8 @@
         font-family: 'Poppins', sans-serif;
         max-width: 100%;
     }
+
+    .link.active{
+        color: #159954;
+    }
 }
