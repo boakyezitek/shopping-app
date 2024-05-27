@@ -1,5 +1,5 @@
 <template>
-    <main class="container mx-auto max-w-[1200px] px-2">
+    <main class="">
       <RouterView />
     </main>
   </template>
