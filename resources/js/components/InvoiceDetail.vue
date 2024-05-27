@@ -1,5 +1,6 @@
 <template>
-    <div class="p-4 flex flex-col gap-4">
+     <Loader v-if="isLoading" />
+    <div class="p-4 flex flex-col gap-4" v-else>
         <div class="flex flex-col items-center justify-center gap-2 w-full">
             <div class="w-[50px] h-[50px] flex items-center justify-center bg-[#d3f8ec] rounded-full">
                 <span class="material-symbols-outlined text-[#30c79b]">
@@ -62,13 +63,19 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { useFetchAPIStore } from '../store/useFetchAPI';
+import Loader from './Loader.vue';
 
 const { useFetchAPI } = useFetchAPIStore();
+
 const invoice = ref(null);
+const isLoading = ref(false);
+
 const handleGetProduct = async() => {
+    isLoading.value = true
     const id = localStorage.getItem('invoiceId');
    await useFetchAPI('invoices', id, 'SHOW').then((res) => {
     invoice.value = res.data
+    isLoading.value = false
    }).catch((err) => console.log(err));
 }
 

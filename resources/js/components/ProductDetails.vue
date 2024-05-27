@@ -1,5 +1,6 @@
 <template>
-    <div class="flex flex-col gap-4 min-h-screen">
+  <Loader v-if="isLoading"/>
+    <div class="flex flex-col gap-4 min-h-screen" v-else>
         <div class="w-full h-180px overflow-hidden bg-white p-2">
             <img :src="product && product.image" alt="image" class="object-contain"/>
         </div>
@@ -37,13 +38,18 @@ star
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useFetchAPIStore } from '../store/useFetchAPI';
+import Loader from './Loader.vue';
 
 const { useFetchAPI } = useFetchAPIStore();
 const product = ref(null);
+const isLoading = ref(false);
+
 const handleGetProduct = async() => {
+    isLoading.value = true
     const id = localStorage.getItem('productId');
    await useFetchAPI('products', id, 'SHOW').then((res) => {
     product.value = res.data
+    isLoading.value = false
    }).catch((err) => console.log(err));
 }
 
