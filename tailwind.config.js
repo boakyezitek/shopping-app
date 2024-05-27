@@ -22,7 +22,8 @@ export default {
             '5xl': '2560px',
           },
           colors: {
-            's-gray-200': '#f0f0f0'
+            's-gray-200': '#f0f0f0',
+            's-green-200': '#159954'
           }
       },
     },

@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage.vue"
 import AboutPage from "../components/AboutPage.vue"
 import NotFoundPage from "../components/NotFoundPage.vue"
 import ProductDetailsPage from "../pages/ProductDetailsPage.vue"
+import InvoicePage from "../pages/InvoicePage.vue"
 
 
 
@@ -13,8 +14,8 @@ const routes = [
     component: HomePage
  },
  {
-    path: "/about",
-    component: AboutPage
+    path: "/invoice",
+    component: InvoicePage
  },
  {
     path: "/products/:id",
