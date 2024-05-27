@@ -5,47 +5,33 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Product from './Product.vue';
 import { useRouter } from 'vue-router';
+import { useFetchAPIStore } from '../store/useFetchAPI';
+
+const { useFetchAPI } = useFetchAPIStore();
 
 const router = useRouter();
 
-const products = ref(
-    [{
-    id: 1,
-    title: "Cobram Oil",
-    image: "/storage/item2.jpg",
-    price: 1300
-},
-{
-    id: 1,
-    title: "Dell Monitor",
-    image: "/storage/item3.jpg",
-    price: 1300
-},
-{
-    id: 1,
-    title: "Long Green Rice",
-    image: "/storage/item1.jpg",
-    price: 1300
-},
-{
-    id: 1,
-    title: "Dark Coffee",
-    image: "/storage/item4.jpg",
-    price: 1300
-}
-
-
-]
-)
+const products = ref([])
 
 
 const handleRouteToPage = (id) => {
+    localStorage.setItem('productId', id);
     router.push(`/products/${id}`);
+
 }
 
+const handleGetProduct = async() => {
+   await useFetchAPI('products', '', 'GET').then((res) => {
+    products.value = res.data
+   }).catch((err) => console.log(err));
+}
+
+onMounted(() => {
+    handleGetProduct()
+})
 </script>
 
 <style lang="scss" scoped>

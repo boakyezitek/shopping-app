@@ -5,61 +5,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Invoice from './Invoice.vue';
+import { useFetchAPIStore } from '../store/useFetchAPI';
+
+const { useFetchAPI } = useFetchAPIStore();
 
 const router = useRouter();
 
-const invoices = ref([
-    {
-        id: 1,
-        title: 'Nike Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 3000.00
-    },
-    {
-        id: 2,
-        title: 'Mac Book Pro Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 13000.00
-    },
-    {
-        id: 3,
-        title: 'HomePod Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 3000.00
-    },
-    {
-        id: 4,
-        title: 'Nike Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 3000.00
-    },
-    {
-        id: 5,
-        title: 'Canon Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 3000.00
-    },
-    {
-        id: 6,
-        title: 'Tesla ltd. Invoice',
-        date: '14 Jan, 2024',
-        status: 'Paid',
-        amount: 3000.00
-    },
-
-])
+const invoices = ref([]);
 
 const handleRouteToPage = (id) => {
+    localStorage.setItem('invoiceId', id);
     router.push(`/invoice/${id}`);
 }
+
+const handleGetInvoice = async() => {
+   await useFetchAPI('invoices', '', 'GET').then((res) => {
+    invoices.value = res.data
+   }).catch((err) => console.log(err));
+}
+
+onMounted(() => {
+    handleGetInvoice()
+})
 
 </script>
 

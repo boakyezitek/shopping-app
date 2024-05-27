@@ -15,7 +15,7 @@ class InvoiceController extends Controller
     public function index()
     {
         try {
-            $invoices = Invoice::query('products')->with('')->latest()->paginate(10);
+            $invoices = Invoice::query()->with('products')->latest()->paginate(10);
 
             return InvoiceResource::collection($invoices);
         } catch (\Exception $e) {

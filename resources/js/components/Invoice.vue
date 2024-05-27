@@ -7,13 +7,13 @@
             </span>
             </div>
             <div class="flex flex-col">
-                <h3 class="text-[13px] font-semibold">{{ invoice.title }}</h3>
-                <span class="text-[12px] text-gray-400"><span>Created: </span> <span>{{ invoice.date }}</span></span>
+                <h3 class="text-[13px] font-semibold">{{ invoice.invoice_number }}</h3>
+                <span class="text-[12px] text-gray-400"><span>Created: </span> <span>{{ invoice.invoice_date }}</span></span>
             </div>
         </div>
         <div>
             <div class="flex flex-col">
-                <h3 class="text-[13px]">GH₵ {{ invoice.amount}}</h3>
+                <h3 class="text-[13px]">${{ invoice.total_amount}}</h3>
                 <span class="text-[12px] text-s-green-200">Paid</span>
             </div>
         </div>

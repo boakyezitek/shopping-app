@@ -1,9 +1,12 @@
 <template>
-    <div class="h-[260px] bg-white shadow-lg rounded-[20px] even:mt-5 overflow-hidden">
-        <img :src="product.image" class=" object-cover h-[70%] w-[100%] rounded-[20px]" />
-        <h4 class="p-2 text-gray-600 font-medium">{{ product.title}}</h4>
+    <div class="even:mt-5 h-[100%]">
+        <div class="bg-white p-1 rounded-[20px] overflow-hidden">
+            <img :src="product.image" class="object-contain h-[180px] w-[100%] rounded-[20px]" />
+        </div>
+
+        <h4 class="p-2 text-gray-600 font-medium">{{ product.name}}</h4>
         <div class="flex items-center justify-between p-2">
-            <span class="text-[14px]">GH₵ {{product.price}}</span>
+            <span class="text-[14px]">${{product.price}}</span>
             <span class="material-symbols-outlined">
                 add
             </span>

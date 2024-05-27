@@ -1,5 +1,5 @@
 <template>
-    <div class="py-2 flex items-center justify-between bg-white shadow-lg px-2">
+    <div class="py-3 flex items-center justify-between bg-[#f3f3f3] shadow-lg px-2">
         <span class="material-symbols-outlined" @click="handleRouteBack">
             keyboard_backspace
         </span>

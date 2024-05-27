@@ -7,12 +7,12 @@
                 </span>
             </div>
 
-            <h1 class=" font-bold text-lg">Invoice #11112232</h1>
+            <h1 class=" font-bold text-lg">Invoice {{invoice && invoice.invoice_number}}</h1>
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-gray-400">
                     calendar_today
                 </span>
-                <span class="text-sm text-gray-400">Issue date: 14 Jan, 2024 </span>
+                <span class="text-sm text-gray-400">Issue date: {{invoice && invoice.invoice_date}} </span>
             </div>
         </div>
 
@@ -20,41 +20,37 @@
 
         <div class="pb-2">
             <h4 class="font-bold">Customer: </h4>
-            <p class="text-gray-400 text-[13px]">XYZ company Customer Relations</p>
-            <p class="text-gray-400 text-[13px]">PO Box 37380 Abuquerque</p>
-            <p class="text-gray-400 text-[13px]">NM 8717607380</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.customer_information.name}}</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.customer_information.email}} </p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.customer_information.phone}}</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.customer_information.address}}</p>
         </div>
         <div class="bg-gray-200 w-full h-[1px]"></div>
         <div class="pb-2">
             <h4 class="font-bold">Supplier: </h4>
-            <p class="text-gray-400 text-[13px]">XYZ company Customer Relations</p>
-            <p class="text-gray-400 text-[13px]">PO Box 37380 Abuquerque</p>
-            <p class="text-gray-400 text-[13px]">NM 8717607380</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.supplier_information.name}}</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.supplier_information.email}} </p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.supplier_information.phone}}</p>
+            <p class="text-gray-400 text-[13px]">{{invoice && invoice.supplier_information.address}}</p>
         </div>
         <div class="bg-gray-200 w-full h-[1px]"></div>
         <div class="pb-2">
             <h4 class="font-bold">Products: </h4>
             <div class="bg-[#f3f3f3] p-2">
-                <div class="grid grid-cols-2 mb-2">
-                <div class="text-[13px] text-gray-500">Mac Book Pro</div>
-                <div class="text-right text-[13px] text-gray-500">3,000.00</div>
+
+            <div class="grid grid-cols-2 mb-2" v-for="product of invoice && invoice.products" :key="product.id">
+                <div class="text-[13px] text-gray-500">{{product.name}}</div>
+                <div class="text-right text-[13px] text-gray-500">{{ product.price }}</div>
            </div>
+
            <div class="grid grid-cols-2 mb-2">
-                <div class="text-[13px] text-gray-500">HomePod</div>
-                <div class="text-right text-[13px] text-gray-500">300.00</div>
-           </div>
-           <div class="grid grid-cols-2 mb-2">
-                <div class="text-[13px] text-gray-500">Oil Dry Pro</div>
-                <div class="text-right text-[13px] text-gray-500">1,000.00</div>
-           </div>
-           <div class="grid grid-cols-2 mb-2">
-                <div class="text-[13px] text-gray-500">%Tax</div>
-                <div class="text-right text-[13px] text-gray-500">0.00</div>
+                <div class="text-[13px] text-gray-500">%Tax({{ invoice  && invoice.tax_information.tax_rate }})</div>
+                <div class="text-right text-[13px] text-gray-500">{{ invoice  && invoice.tax_information.tax_amount }}</div>
            </div>
 
            <div class="grid grid-cols-2 mb-2">
                 <div class="text-[16px] text-s-green-200 font-bold">Total</div>
-                <div class="text-right text-[16px] text-s-green-200 font-bold">GH₵ 4,300.00</div>
+                <div class="text-right text-[16px] text-s-green-200 font-bold">${{invoice && `${totalProduct  + invoice.tax_information.tax_amount}`}}</div>
            </div>
             </div>
 
@@ -64,7 +60,25 @@
 </template>
 
 <script setup>
+import { computed, onMounted, ref } from 'vue';
+import { useFetchAPIStore } from '../store/useFetchAPI';
 
+const { useFetchAPI } = useFetchAPIStore();
+const invoice = ref(null);
+const handleGetProduct = async() => {
+    const id = localStorage.getItem('invoiceId');
+   await useFetchAPI('invoices', id, 'SHOW').then((res) => {
+    invoice.value = res.data
+   }).catch((err) => console.log(err));
+}
+
+const totalProduct = computed(() => {
+    return invoice.value?.products?.reduce((sum, item) => sum + Number(item.price), 0)
+})
+
+onMounted(() => {
+    handleGetProduct()
+})
 </script>
 
 <style lang="scss" scoped></style>

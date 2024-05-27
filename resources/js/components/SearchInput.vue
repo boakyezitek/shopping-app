@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-s-gray-200 h-[40px] rounded-[20px] flex items-center px-2">
+    <div class="bg-white shadow-lg h-[40px] rounded-[20px] flex items-center px-2">
         <span class="material-symbols-outlined">
 search
 </span>

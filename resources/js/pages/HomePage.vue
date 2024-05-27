@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto max-w-[1200px] px-2">
-        <div class="min-h-screen mb-10">
+        <div class="min-h-screen mb-20">
             <TopBar />
             <SearchInput />
             <Banner />
