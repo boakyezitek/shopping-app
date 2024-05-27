@@ -1,4 +1,5 @@
 # Project Name
+### Shopping Store
 
 ## Description
 This project is a web application that allows users to view a list of products, view product details, add products to a cart, view a list of invoices, and view invoice details. The application is built using Laravel for the API and Vue.js for the client-side.
